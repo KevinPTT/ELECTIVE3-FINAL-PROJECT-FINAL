@@ -215,6 +215,7 @@ public function recentBookings()
 public function dashboard(Request $request)
 {
     $totalReceivedTickets = Booking::where('status', 'received')->count();
+    $userData = $this->getUserData();
 
     $totalBookingCount = Booking::count();
     $todaysBookingCount = Booking::whereDate('created_at', now()->today())->count();
@@ -224,8 +225,17 @@ public function dashboard(Request $request)
     $totalUsers = User::where('role', '!=', 'admin')->count();
     $totalPassengers = $request->input('randomPassenger', 0);
 
-    return view('admin.main.dashboard.dashboard', compact('totalReceivedTickets', 'totalBookingCount', 'todaysBookingCount', 'lastWeekBookingCount', 'lastMonthBookingCount', 'totalUsers', 'totalPassengers'));
+    return view('admin.main.dashboard.dashboard', compact('userData','totalReceivedTickets', 'totalBookingCount', 'todaysBookingCount', 'lastWeekBookingCount', 'lastMonthBookingCount', 'totalUsers', 'totalPassengers'));
 }
+
+public function getUserData()
+{
+    $userId = Auth::id(); // Get the ID of the logged-in user
+    $userData = User::find($userId); // Fetch the user data from the database
+
+    return $userData;
+}
+
 
 
 }

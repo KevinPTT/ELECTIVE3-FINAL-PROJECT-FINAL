@@ -21,7 +21,8 @@ Route::middleware(['auth', 'role'])->group(function () {
 
 Route::get('/user/main/journey/{id}/form', [BookingController::class, 'showForm'])->name('show.form');
 Route::post('/user/main/journey/{id}/form', [BookingController::class, 'submitForm'])->name('submit.post');
-Route::post('/user/main/{id}/submit', [BookingController::class, 'submit'])->name('submit.post');
+// Route::post('/user/main/{id}/submit', [BookingController::class, 'submit'])->name('submit.post');
+Route::get('/admin/main/dashboard', [BookingController::class, 'dashboard'])->name('dashboard');
 
 
 
@@ -56,6 +57,7 @@ Route::get('/admin/main/booking/schedule', [JourneyController::class, 'scheduled
 Route::get('/admin/main/booking/schedule', [BookingController::class, 'scheduled'])->name('tickets');
 Route::get('/admin/main/booking/schedule', [BookingController::class, 'scheduled'])->name('ticket.scheduled');
 Route::get('/admin/main/booking/schedule', [BookingController::class, 'scheduled'])->name('schedule.schedule');
+Route::get('/admin/main/dashoard', [BookingController::class, 'getUserData'])->name('getUserData');
 
 
 

@@ -12,8 +12,7 @@
                 </div>
                 <div class="avartar-info">
                     <div class="avartar-text">
-                        <h4>KEVIN COSTAMERO</h4>
-                        <small>1029-1234-235</small>
+                        <h4>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h4> <!-- Display the user's name -->
                     </div>
                     <span class="las la-angle-double-down"></span>
                 </div>
